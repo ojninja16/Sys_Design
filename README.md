@@ -87,10 +87,13 @@ npm run dev
 - Single-instance deployment only
 
 ## 📊 System Architecture
+<img width="1486" height="832" alt="systemarhcitecture" src="https://github.com/user-attachments/assets/fabfc2b4-a9fd-4b9c-85e7-7559d11b1a04" />
+
 
 
 
 ## 🔄 User Flow Diagram
+<img width="915" height="783" alt="UserFlow" src="https://github.com/user-attachments/assets/0a3beed0-13e2-44ca-a806-9e69d16aec8f" />
 
 
 
