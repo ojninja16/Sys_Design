@@ -79,13 +79,12 @@ GET    /api/health             → System health check ✅
 ## 5. Data Flow
 
 ### Request Processing
-```
-User Input → Prompt Engineering → AI Service → Code Generation
-     ↓              ↓                 ↓            ↓
-Cache Check → Validation → OpenAI API → File Storage
-     ↓              ↓                 ↓            ↓
-Job Status → Database → S3 Upload → Presigned URLs
-```
+- User types prompt → Frontend validates it
+- POST /api/generate → Backend creates job, returns jobId immediately
+- Background processing starts → AI generates code while user waits , uppdates status , pushes generated code as files to S3
+- Frontend polls GET /api/jobs/{jobId}/status every 2 seconds
+- When complete → GET /api/results/{jobId} returns a map of filenames with other metadata along with a mapping of files and their pre-signed URL's
+- User downloads → ZIP file with complete project
 
 ### Caching Strategy
 - **Prompt Hash**: 24h TTL for identical requests
@@ -142,6 +141,7 @@ Job Status → Database → S3 Upload → Presigned URLs
 - ❌ Database read replicas
 - ❌ Monitoring and alerting
 - ❌ Auto-scaling configuration
+- Job Queues implementation
 
 ### Immediate Next Steps
 -  Database schemas and migrations
