@@ -79,6 +79,22 @@ npm run dev
 **Backend**: Express + TypeScript + Mock Services  
 **Design**: System design patterns for scalability
 
+## Trade-Offs
+Since this was a POC, I optimized for **simplicity over completeness**. That meant cutting corners in places where production systems would need more robustness.
+
+- **Job Processing**: I used a simple async pattern (`setImmediate`) to simulate jobs. It works for a demo but doesn’t scale or survive restarts. In production, I’d use a proper queue (Redis/BullMQ or SQS).
+
+- **Status Updates**: The frontend polls for job status. Polling was quick to implement, but it wastes resources and delays updates. Long term, SSE would give real-time feedback without the extra load.
+
+- **Caching**: Everything is in memory today, which only works for a single node. Redis would be the right choice for a shared, durable cache and pub/sub notifications.
+
+- **Load Balancing**: I skipped it because there’s just one server. A real system would sit behind Nginx .
+
+- **File Storage**: Files are kept in memory for now, which isn’t durable. In production I’d move them to S3 with presigned URLs.
+
+- **AI**: Mocked responses instead of real OpenAI calls to avoid cost and keep development fast. In production I’d integrate the API by adding the API key.
+
+
 ##  Limitations
 
 - All data is in-memory (resets on restart)
