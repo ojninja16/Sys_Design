@@ -1,0 +1,102 @@
+/* Simple syntax highlighting styles */
+.language-typescript,
+.language-tsx,
+.language-javascript,
+.language-jsx {
+  color: #1e293b;
+}
+
+.dark .language-typescript,
+.dark .language-tsx,
+.dark .language-javascript,
+.dark .language-jsx {
+  color: #e2e8f0;
+}
+
+/* Keywords */
+.language-typescript .token.keyword,
+.language-tsx .token.keyword,
+.language-javascript .token.keyword,
+.language-jsx .token.keyword {
+  color: #7c3aed;
+  font-weight: 600;
+}
+
+/* Strings */
+.language-typescript .token.string,
+.language-tsx .token.string,
+.language-javascript .token.string,
+.language-jsx .token.string {
+  color: #059669;
+}
+
+/* Comments */
+.language-typescript .token.comment,
+.language-tsx .token.comment,
+.language-javascript .token.comment,
+.language-jsx .token.comment {
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Functions */
+.language-typescript .token.function,
+.language-tsx .token.function,
+.language-javascript .token.function,
+.language-jsx .token.function {
+  color: #dc2626;
+}
+
+/* Numbers */
+.language-typescript .token.number,
+.language-tsx .token.number,
+.language-javascript .token.number,
+.language-jsx .token.number {
+  color: #ea580c;
+}
+
+/* JSON */
+.language-json {
+  color: #1e293b;
+}
+
+.dark .language-json {
+  color: #e2e8f0;
+}
+
+.language-json .token.property {
+  color: #dc2626;
+}
+
+.language-json .token.string {
+  color: #059669;
+}
+
+.language-json .token.number {
+  color: #ea580c;
+}
+
+.language-json .token.boolean {
+  color: #7c3aed;
+}
+
+/* CSS */
+.language-css {
+  color: #1e293b;
+}
+
+.dark .language-css {
+  color: #e2e8f0;
+}
+
+.language-css .token.selector {
+  color: #dc2626;
+}
+
+.language-css .token.property {
+  color: #7c3aed;
+}
+
+.language-css .token.string {
+  color: #059669;
+}
