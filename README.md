@@ -82,6 +82,8 @@ npm run dev
 ## Trade-Offs
 Since this was a POC, I optimized for **simplicity over completeness**. That meant cutting corners in places where production systems would need more robustness.
 
+- **Job Queue vs Streaming HTTP** : I chose to make code generation an async job instead of streaming an HTTP response. Jobs made the flow simpler: the API can accept a request, return a job ID immediately, and let the backend work in the background. The tradeoff is slower UX compared to streaming partial results, but the upside is clearer separation of concerns and easier retries.My understanding is that a complex and potentially lengthy task like AI code generation, guaranteeing that the job will complete successfully is far more important than showing the user a real-time stream of characters. Additionaly it should scale better as well due to decoupling of the server and the background workers.
+
 - **Job Processing**: I used a simple async pattern (`setImmediate`) to simulate jobs. It works for a demo but doesn’t scale or survive restarts. In production, I’d use a proper queue (Redis/BullMQ or SQS).
 
 - **Status Updates**: The frontend polls for job status. Polling was quick to implement, but it wastes resources and delays updates. Long term, SSE would give real-time feedback without the extra load.
