@@ -115,7 +115,7 @@ Since this was a POC, I optimized for **simplicity over completeness**. That mea
 
 ## 🚀 Next Steps (Production)
 
-**Everything is already architected and ready!** We have configurations for Redis, OpenAI client, S3 bucket, etc. in place - just need to integrate them with backend and add the required env setup like Docker volumes for backend with DB + caching and AWS credentials.
+We have configurations for Redis, OpenAI client, S3 bucket, etc. in place - just need to integrate them with backend and add the required env setup like Docker volumes for backend with DB + caching and AWS credentials.
 ### What Changes in Production
 - **File Storage**: Direct file content → AWS S3 presigned URLs (24h expiry)
 - **Database**: In-memory → PostgreSQL with persistent volumes
